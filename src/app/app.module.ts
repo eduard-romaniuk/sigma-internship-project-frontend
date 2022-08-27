@@ -7,6 +7,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { RegistrationPageComponent } from './pages/registration-page/registration-page.component';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { MenuComponent } from './components/menu/menu.component';
     HomePageComponent,
     RegistrationPageComponent,
     NotFoundPageComponent,
-    MenuComponent
+    MenuComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
