@@ -4,16 +4,26 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
+import { RegistrationPageComponent } from './pages/registration-page/registration-page.component';
+import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomePageComponent
+    HomePageComponent,
+    RegistrationPageComponent,
+    NotFoundPageComponent,
+    MenuComponent,
+    LoginPageComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
