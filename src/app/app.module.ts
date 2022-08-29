@@ -8,6 +8,7 @@ import { RegistrationPageComponent } from './pages/registration-page/registratio
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -18,10 +19,11 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
     MenuComponent,
     LoginPageComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

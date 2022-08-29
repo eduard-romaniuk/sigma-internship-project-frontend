@@ -9,33 +9,42 @@
 
                 <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign in</p>
 
-                <form class="mx-md-45">
+                <form class="mx-md-45" [formGroup]="myForm" (ngSubmit)="submit()">
 
-                  <div class="d-flex flex-row align-items-center mb-4">
+                  <div class="d-flex flex-row align-items-center mb-3">
                     <i class="fas fa-envelope fa-lg me-1 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
                       <label class="form-label" for="form3Example3c">Your Email</label>
-                      <input type="email" id="form3Example3c" class="form-control" />
+                      <input type="email" id="form3Example3c" class="form-control" formControlName="userEmail"/>
+                      <div class="alert alert-danger mt-2" role="alert" *ngIf="myForm.controls['userEmail'].invalid &&
+                       myForm.controls['userEmail'].touched">
+                        Invalid email!
+                      </div>
                     </div>
                   </div>
 
-                  <div class="d-flex flex-row align-items-center mb-5">
+                  <div class="d-flex flex-row align-items-center mb-3">
                     <i class="fas fa-lock fa-lg me-1 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
                       <label class="form-label" for="form3Example4c">Password</label>
-                      <input type="password" id="form3Example4c" class="form-control" />
+                      <input type="password" id="form3Example4c" class="form-control" formControlName="userPassword"/>
+                      <div class="alert alert-danger mt-2" role="alert" *ngIf="myForm.controls['userPassword'].invalid &&
+                       myForm.controls['userPassword'].touched">
+                        Invalid password!
+                      </div>
                     </div>
                   </div>
 
-                  <div class="d-flex justify-content-center mb-3 mb-lg-4">
-                    <button type="button" class="btn btn-dark btn-lg me-3 w-100">login</button>
-                    <button type="button" class="btn btn-outline-dark btn-lg w-100" routerLink="/registration">sign up</button>
+                  <div class="d-flex justify-content-center mb-3 mt-4 mb-lg-4">
+                    <button class="btn btn-dark btn-lg me-3 w-100" name="login">login</button>
+                    <button class="btn btn-outline-dark btn-lg w-100" routerLink="/registration">sign up</button>
                   </div>
 
                 </form>
 
               </div>
-              <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center justify-content-center order-1 order-lg-2">
+              <div
+                class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center justify-content-center order-1 order-lg-2">
 
                 <img src="https://i.pinimg.com/564x/cb/24/b2/cb24b2ab0ea245198e227a8996bf1461.jpg"
                      class="img-fluid" alt="Sample image">
