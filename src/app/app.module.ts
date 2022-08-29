@@ -9,6 +9,9 @@ import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.com
 import { MenuComponent } from './components/menu/menu.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { PersonalProfilePageComponent } from './pages/personal-profile-page/personal-profile-page.component';
+import { FundsListPageComponent } from './pages/funds-list-page/funds-list-page.component';
+import { UsersListPageComponent } from './pages/users-list-page/users-list-page.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,10 @@ import {ReactiveFormsModule} from "@angular/forms";
     RegistrationPageComponent,
     NotFoundPageComponent,
     MenuComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    PersonalProfilePageComponent,
+    FundsListPageComponent,
+    UsersListPageComponent
   ],
     imports: [
         BrowserModule,
