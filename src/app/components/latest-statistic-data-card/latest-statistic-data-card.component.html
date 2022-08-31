@@ -1,0 +1,73 @@
+<div class="col-6 latest-stat" *ngIf="statisticData != undefined">
+  <div>
+    <h2>Latest Statistics</h2>
+    <h6>
+      {{statisticData.warDate}} ({{statisticData.dayNumber}} day)
+    </h6>
+  </div>
+  <div class="loss-wrapper">
+    <div class="loss-box" *ngIf="statisticData.personnel_units != 0">
+      <b>+{{statisticData.personnel_units}}</b>
+      <span>Personnel units</span>
+    </div>
+    <div class="loss-box" *ngIf="statisticData.tanks != 0">
+      <b>+{{statisticData.tanks}}</b>
+      <span>Tanks</span>
+    </div>
+    <div class="loss-box" *ngIf="statisticData.armoured_fighting_vehicles != 0">
+      <b>+{{statisticData.armoured_fighting_vehicles}}</b>
+      <span>Armoured fighting vehicles</span>
+    </div>
+    <div class="loss-box" *ngIf="statisticData.artillery_systems != 0">
+      <b>+{{statisticData.artillery_systems}}</b>
+      <span>Artillery systems</span>
+    </div>
+    <div class="loss-box" *ngIf="statisticData.mlrs != 0">
+      <b>+{{statisticData.mlrs}}</b>
+      <span>MLRS</span>
+    </div>
+    <div class="loss-box" *ngIf="statisticData.aa_warfare_systems != 0">
+      <b>+{{statisticData.aa_warfare_systems}}</b>
+      <span>AA warfare systems</span>
+    </div>
+    <div class="loss-box" *ngIf="statisticData.planes != 0">
+      <b>+{{statisticData.planes}}</b>
+      <span>Planes</span>
+    </div>
+    <div class="loss-box" *ngIf="statisticData.helicopters != 0">
+      <b>+{{statisticData.helicopters}}</b>
+      <span>Helicopters</span>
+    </div>
+    <div class="loss-box" *ngIf="statisticData.vehicles_fuel_tanks != 0">
+      <b>+{{statisticData.vehicles_fuel_tanks}}</b>
+      <span>Vehicles fuel tanks</span>
+    </div>
+    <div class="loss-box" *ngIf="statisticData.warships_cutters != 0">
+      <b>+{{statisticData.warships_cutters}}</b>
+      <span>Warships cutters</span>
+    </div>
+    <div class="loss-box" *ngIf="statisticData.cruise_missiles != 0">
+      <b>+{{statisticData.cruise_missiles}}</b>
+      <span>Cruise missiles</span>
+    </div>
+    <div class="loss-box" *ngIf="statisticData.uav_systems != 0">
+      <b>+{{statisticData.uav_systems}}</b>
+      <span>UAV systems</span>
+    </div>
+    <div class="loss-box" *ngIf="statisticData.special_military_equip != 0">
+      <b>+{{statisticData.special_military_equip}}</b>
+      <span>Special military equip</span>
+    </div>
+    <div class="loss-box" *ngIf="statisticData.atgm_srbm_systems != 0">
+      <b>+{{statisticData.atgm_srbm_systems}}</b>
+      <span>atgm srbm system</span>
+    </div>
+  </div>
+</div>
+
+<div class="col-6 latest-stat" *ngIf="statisticData == undefined">
+  <div>
+    <h2>Latest Statistics</h2>
+    <a href="https://www.facebook.com/MinistryofDefence.UA">Follow ministry of defence to know about the latest news</a>
+  </div>
+</div>

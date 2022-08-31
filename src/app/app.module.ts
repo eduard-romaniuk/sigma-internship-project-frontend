@@ -14,6 +14,7 @@ import { FundsListPageComponent } from './pages/funds-list-page/funds-list-page.
 import { UsersListPageComponent } from './pages/users-list-page/users-list-page.component';
 import { FundCollectionComponent } from './components/fund-collection/fund-collection.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LatestStatisticDataCardComponent } from './components/latest-statistic-data-card/latest-statistic-data-card.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { HttpClientModule } from '@angular/common/http';
     PersonalProfilePageComponent,
     FundsListPageComponent,
     UsersListPageComponent,
-    FundCollectionComponent
+    FundCollectionComponent,
+    LatestStatisticDataCardComponent
   ],
   imports: [
     BrowserModule,
