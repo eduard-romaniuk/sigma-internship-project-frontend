@@ -1,8 +1,8 @@
 export class LossDay {
-  date: Date
+  date: string
   lossAmount: number
 
-  constructor(date: Date, lossAmount: number) {
+  constructor(date: string, lossAmount: number) {
     this.date = date
     this.lossAmount = lossAmount
   }

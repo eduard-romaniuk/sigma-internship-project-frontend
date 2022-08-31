@@ -1,0 +1,26 @@
+.math-stat {
+  padding: 30px;
+
+  .head {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom: 10px;
+  }
+
+  .calc-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
+    .calc-box {
+      line-height: 1.5em;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      b {
+        font-size: 2em;
+      }
+    }
+  }
+}

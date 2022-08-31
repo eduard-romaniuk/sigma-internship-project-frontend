@@ -15,6 +15,8 @@ import { UsersListPageComponent } from './pages/users-list-page/users-list-page.
 import { FundCollectionComponent } from './components/fund-collection/fund-collection.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LatestStatisticDataCardComponent } from './components/latest-statistic-data-card/latest-statistic-data-card.component';
+import { MathStatisticDataCardComponent } from './components/math-statistic-data-card/math-statistic-data-card.component';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -28,13 +30,15 @@ import { LatestStatisticDataCardComponent } from './components/latest-statistic-
     FundsListPageComponent,
     UsersListPageComponent,
     FundCollectionComponent,
-    LatestStatisticDataCardComponent
+    LatestStatisticDataCardComponent,
+    MathStatisticDataCardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
