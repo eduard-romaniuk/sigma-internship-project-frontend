@@ -12,6 +12,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import { PersonalProfilePageComponent } from './pages/personal-profile-page/personal-profile-page.component';
 import { FundsListPageComponent } from './pages/funds-list-page/funds-list-page.component';
 import { UsersListPageComponent } from './pages/users-list-page/users-list-page.component';
+import { MenuAuthComponent } from './components/menu-auth/menu-auth.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { UsersListPageComponent } from './pages/users-list-page/users-list-page.
     LoginPageComponent,
     PersonalProfilePageComponent,
     FundsListPageComponent,
-    UsersListPageComponent
+    UsersListPageComponent,
+    MenuAuthComponent
   ],
     imports: [
         BrowserModule,
