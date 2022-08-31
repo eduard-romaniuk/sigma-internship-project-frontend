@@ -17,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LatestStatisticDataCardComponent } from './components/latest-statistic-data-card/latest-statistic-data-card.component';
 import { MathStatisticDataCardComponent } from './components/math-statistic-data-card/math-statistic-data-card.component';
 import { NgChartsModule } from 'ng2-charts';
+import { MenuAuthComponent } from './components/menu-auth/menu-auth.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { NgChartsModule } from 'ng2-charts';
     UsersListPageComponent,
     FundCollectionComponent,
     LatestStatisticDataCardComponent,
-    MathStatisticDataCardComponent
+    MathStatisticDataCardComponent,
+    MenuAuthComponent
   ],
   imports: [
     BrowserModule,
