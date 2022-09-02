@@ -66,13 +66,13 @@
               "namedChunks": true
             }
           },
-          "defaultConfiguration": "production"
+          "defaultConfiguration": "development"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
-            "production": {
-              "browserTarget": "sigma-internship-frontend:build:production"
+            "heroku": {
+              "browserTarget": "sigma-internship-frontend:build:heroku"
             },
             "development": {
               "browserTarget": "sigma-internship-frontend:build:development"
