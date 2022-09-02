@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { map } from "rxjs";
+import { environment } from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,7 @@ export class AuthService {
 
   authenticationService(username: string, password: string) {
     this.authToken = this.createBasicAuthToken(username, password)
-    return this.http.get(`http://localhost:8080/fund`,
+    return this.http.get(`${environment.apiUrl}/fund`,
       { headers: { 'Authorization': this.authToken } }).pipe(map((res) => {
         this.username = username;
         this.password = password;

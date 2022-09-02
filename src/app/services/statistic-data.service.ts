@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { CalculatedStatisticData } from '../models/CalculatedStatisticData';
 import { LatestStatisticData } from '../models/LatestStatisticData';
 import { LossDay } from '../models/LossDay';
+import { environment } from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class StatisticDataService {
 
   constructor(private http: HttpClient) { }
 
-  url = 'http://localhost:8080/statistic-data'
+  url = `${environment.apiUrl}/statistic-data`
 
   getLatestStatisticData(): Observable<LatestStatisticData> {
     return this.http.get(`${this.url}/latest`) as Observable<LatestStatisticData>
@@ -20,7 +21,7 @@ export class StatisticDataService {
 
   getCalculatedStatisticData(lossType?: string): Observable<CalculatedStatisticData> {
     let endpoint = `${this.url}/math`
-    
+
     if(typeof lossType === "undefined") {
       return this.http.get(endpoint) as Observable<CalculatedStatisticData>
     } else {
