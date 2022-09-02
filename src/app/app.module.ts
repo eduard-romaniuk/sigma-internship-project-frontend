@@ -17,8 +17,8 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { LatestStatisticDataCardComponent } from './components/latest-statistic-data-card/latest-statistic-data-card.component';
 import { MathStatisticDataCardComponent } from './components/math-statistic-data-card/math-statistic-data-card.component';
 import { NgChartsModule } from 'ng2-charts';
-import { MenuAuthComponent } from './components/menu-auth/menu-auth.component';
 import { HttpInterceptorService } from './services/httpInterceptor.service';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +34,7 @@ import { HttpInterceptorService } from './services/httpInterceptor.service';
     FundCollectionComponent,
     LatestStatisticDataCardComponent,
     MathStatisticDataCardComponent,
-    MenuAuthComponent
+    FooterComponent
   ],
   imports: [
     BrowserModule,

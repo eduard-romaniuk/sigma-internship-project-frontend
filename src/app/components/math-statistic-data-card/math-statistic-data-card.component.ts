@@ -4,6 +4,7 @@ import { ChartConfiguration, ChartOptions } from 'chart.js';
 import { LossType } from 'src/app/enums/loss-type';
 import { CalculatedStatisticData } from 'src/app/models/CalculatedStatisticData';
 import { LossDay } from 'src/app/models/LossDay';
+import { AuthService } from 'src/app/services/auth.service';
 import { StatisticDataService } from 'src/app/services/statistic-data.service';
 
 @Component({
@@ -12,6 +13,8 @@ import { StatisticDataService } from 'src/app/services/statistic-data.service';
   styleUrls: ['./math-statistic-data-card.component.scss']
 })
 export class MathStatisticDataCardComponent implements OnInit {
+
+  isLoggedIn: boolean = false;
 
   lossTypes: Array<string> = Object.keys(LossType).filter(key => isNaN(+key));
   currentLossType: string = this.lossTypes[LossType.personnel_units];
@@ -28,11 +31,12 @@ export class MathStatisticDataCardComponent implements OnInit {
     responsive: true
   };
 
-
-  constructor(private statisticDataService: StatisticDataService) { }
+  constructor(private statisticDataService: StatisticDataService,
+    private authService: AuthService) { }
 
   ngOnInit(): void {
     this.initContent();
+    this.isLoggedIn = this.authService.isUserLoggedIn();
   }
 
   changeLossType(selecedLossType: string) {

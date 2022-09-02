@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {ActivatedRoute, Router} from "@angular/router";
-import {AuthService} from "../../services/auth.service";
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { ActivatedRoute, Router } from "@angular/router";
+import { AuthService } from "../../services/auth.service";
 
 
 @Component({
@@ -12,13 +12,13 @@ import {AuthService} from "../../services/auth.service";
 export class LoginPageComponent implements OnInit {
 
   errorMessage = 'Invalid Credentials';
-  invalidLogin = false;
-  loginSuccess = false;
+
+  loginFailure = false;
   myForm: FormGroup
 
   constructor(private route: ActivatedRoute,
-              private router: Router,
-              private authenticationService: AuthService) {
+    private router: Router,
+    private authenticationService: AuthService) {
     this.myForm = new FormGroup({
       "userEmail": new FormControl('', [Validators.required, Validators.email]),
       "userPassword": new FormControl('', Validators.required),
@@ -29,14 +29,16 @@ export class LoginPageComponent implements OnInit {
   }
 
   submit() {
-    this.authenticationService.authenticationService(this.myForm.controls["userEmail"].value,
-                              this.myForm.controls["userPassword"].value).subscribe((result)=> {
-      this.invalidLogin = false;
-      this.loginSuccess = true;
-      this.router.navigate(['']);
+    let login = this.myForm.controls["userEmail"].value
+    let password = this.myForm.controls["userPassword"].value
+    this.authenticationService.authenticationService(
+      login, password).subscribe((result) => {
+      this.loginFailure = false;
+      this.router.navigate(['']).then(() => {
+        window.location.reload();
+      });
     }, () => {
-      this.invalidLogin = true;
-      this.loginSuccess = false;
+      this.loginFailure = true;
     });
   }
 

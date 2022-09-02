@@ -17,9 +17,9 @@
         <li *ngIf="isLoggedIn" class="nav-item me-5">
           <a class="nav-link" routerLink="/api" style="color: black">API</a>
         </li>
-        <button *ngIf="!isLoggedIn" type="button" class="btn btn-outline-dark me-3" routerLink="/login">log in</button>
-        <button *ngIf="!isLoggedIn" type="button" class="btn btn-outline-dark me-3" routerLink="/registration">sign up</button>
-        <button *ngIf="isLoggedIn" type="button" class="btn btn-outline-dark" (click)=handleLogout() routerLink="/login">log out</button>
+        <button *ngIf="!isLoggedIn" type="button" class="btn btn-outline-dark me-3" routerLink="/login">Log In</button>
+        <button *ngIf="!isLoggedIn" type="button" class="btn btn-dark me-3" routerLink="/registration">Sign Up</button>
+        <button *ngIf="isLoggedIn" type="button" class="btn btn-outline-dark" (click)=handleLogout() routerLink="/">Log Out</button>
       </ul>
     </div>
   </nav>
