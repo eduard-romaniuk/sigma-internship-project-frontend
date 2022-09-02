@@ -11,8 +11,14 @@
         <li class="nav-item me-5">
           <a class="nav-link" routerLink="/" style="color: black">Home</a>
         </li>
-        <button type="button" class="btn btn-outline-dark mx-2 me-4" routerLink="/login">Log in</button>
-        <button type="button" class="btn btn-outline-dark" routerLink="/registration">Sign up</button>
+        <li *ngIf="isLoggedIn" class="nav-item me-5">
+          <a class="nav-link" routerLink="/profile" style="color: black">Profile</a>
+        </li>
+        <li *ngIf="isLoggedIn" class="nav-item me-5">
+          <a class="nav-link" routerLink="/api" style="color: black">API</a>
+        </li>
+        <button *ngIf="!isLoggedIn"type="button" class="btn btn-outline-dark me-3" routerLink="/">log in</button>
+        <button type="button" class="btn btn-outline-dark" routerLink="/">log out</button>
       </ul>
     </div>
   </nav>
