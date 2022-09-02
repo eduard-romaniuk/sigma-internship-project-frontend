@@ -13,11 +13,12 @@ import { PersonalProfilePageComponent } from './pages/personal-profile-page/pers
 import { FundsListPageComponent } from './pages/funds-list-page/funds-list-page.component';
 import { UsersListPageComponent } from './pages/users-list-page/users-list-page.component';
 import { FundCollectionComponent } from './components/fund-collection/fund-collection.component';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { LatestStatisticDataCardComponent } from './components/latest-statistic-data-card/latest-statistic-data-card.component';
 import { MathStatisticDataCardComponent } from './components/math-statistic-data-card/math-statistic-data-card.component';
 import { NgChartsModule } from 'ng2-charts';
 import { MenuAuthComponent } from './components/menu-auth/menu-auth.component';
+import { HttpInterceptorService } from './services/httpInterceptor.service';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,13 @@ import { MenuAuthComponent } from './components/menu-auth/menu-auth.component';
     HttpClientModule,
     NgChartsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

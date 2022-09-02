@@ -1,1 +1,38 @@
-<p>funds-list-page works!</p>
+<app-menu-auth></app-menu-auth>
+
+<div class="flex d-inline-flex w-100 justify-content-between align-items-center mt-5">
+  <div class=" mx-5 d-flex w-25 justify-content-between align-items-center">
+    <div class="d-flex mx-5">
+      <h1 class="mx-2"><b>Funds table</b></h1>
+    </div>
+    <div class="d-flex">
+      <button class="btn btn-dark"> Add new fund </button>
+    </div>
+  </div>
+  <div class="back_btn d-flex">
+    <button class=" btn btn-outline-dark">Back to profile</button>
+  </div>
+</div>
+<div class="table_b d-flex flex-row">
+  <table class="table">
+    <thead>
+      <th scope="col">ID</th>
+      <th scope="col">Fund name</th>
+      <th scope="col">Fund description</th>
+      <th scope="col">Fund link</th>
+      <th scope="col" class="col-md-2">Actions</th>
+    </thead>
+    <tbody class="table-group-divider">
+      <tr *ngFor="let fund of funds">
+        <td>{{fund.id}}</td>
+        <td>{{fund.name}}</td>
+        <td>{{fund.description}}</td>
+        <td>{{fund.link}}</td>
+        <td>
+          <button type="button" class="btn btn-danger me-3">Remove</button>
+          <button type="button" class="btn btn-success px-4">Edit</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
