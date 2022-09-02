@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-personal-profile-page',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PersonalProfilePageComponent implements OnInit {
 
-  constructor() { }
+  email: String = "{}"
+
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
+    this.email = this.authService.getLoggedInUserName()
   }
 
 }

@@ -1,8 +1,10 @@
-<div class="col-lg-6 col-md-12 math-stat">
+<div class="col math-stat" *ngIf="isLoggedIn">
   <div class="head">
-    <h2>Math statistic data card</h2>
-    <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+    <h2>Math Statistics</h2>
+
+    <div class="dropdown" >
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+        aria-expanded="false">
         {{currentLossType}}
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -13,25 +15,38 @@
     </div>
   </div>
 
-  <canvas baseChart [data]="barChartData" [options]="barChartOptions" [legend]="barChartLegend" [type]="'bar'">
-  </canvas>
-  <div class="calc-wrapper" *ngIf="calculatedStatisticData != undefined">
-    <div class="calc-box">
-      <b>{{calculatedStatisticData.max}}</b>
-      <span>Max</span>
+  <div class="content">
+    <canvas baseChart [data]="barChartData" [options]="barChartOptions" [legend]="barChartLegend"
+      [type]="'bar'"></canvas>
+    <div class="calc-wrapper" *ngIf="calculatedStatisticData != undefined">
+      <div class="calc-box">
+        <b>{{calculatedStatisticData.max}}</b>
+        <span>Max</span>
+      </div>
+      <div class="calc-box">
+        <b>{{calculatedStatisticData.min}}</b>
+        <span>Min</span>
+      </div>
+      <div class="calc-box">
+        <b>{{calculatedStatisticData.mean}}</b>
+        <span>Mean</span>
+      </div>
+      <div class="calc-box">
+        <b>{{calculatedStatisticData.median}}</b>
+        <span>Median</span>
+      </div>
     </div>
-    <div class="calc-box">
-      <b>{{calculatedStatisticData.min}}</b>
-      <span>Min</span>
+  </div>
+
+</div>
+
+<div class="px-4 py-5 my-5 text-center" *ngIf="!isLoggedIn">
+  <h1 class="display-5 fw-bold">Create account</h1>
+  <div class="col-lg-6 mx-auto">
+    <p class="lead mb-4">to see and examine more russian losses in russo-Ukrainian War</p>
+    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+      <button type="button" class="btn btn-primary btn-lg px-4 gap-3" routerLink="/registration">Create account</button>
+      <button type="button" class="btn btn-outline-secondary btn-lg px-4"  routerLink="/login">Already have a new account</button>
     </div>
-    <div class="calc-box">
-      <b>{{calculatedStatisticData.mean}}</b>
-      <span>Mean</span>
-    </div>
-    <div class="calc-box">
-      <b>{{calculatedStatisticData.median}}</b>
-      <span>Median</span>
-    </div>
-   
   </div>
 </div>

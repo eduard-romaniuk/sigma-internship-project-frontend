@@ -10,17 +10,6 @@ import { LossDay } from '../models/LossDay';
 })
 export class StatisticDataService {
 
-  username: string = "admin@email.com";
-  password: string = "admin";
-
-  headers = new HttpHeaders()
-  .set('Content-Type', 'application/json')
-  .append('Authorization', "Basic " + btoa(`${this.username}:${this.password}`))
-
-  httpOptions = {
-    headers: this.headers
-  };
-
   constructor(private http: HttpClient) { }
 
   url = 'http://localhost:8080/statistic-data'
@@ -33,9 +22,9 @@ export class StatisticDataService {
     let endpoint = `${this.url}/math`
     
     if(typeof lossType === "undefined") {
-      return this.http.get(endpoint, this.httpOptions) as Observable<CalculatedStatisticData>
+      return this.http.get(endpoint) as Observable<CalculatedStatisticData>
     } else {
-      return this.http.get(`${endpoint}?lossType=${lossType}`, this.httpOptions) as Observable<CalculatedStatisticData>
+      return this.http.get(`${endpoint}?lossType=${lossType}`) as Observable<CalculatedStatisticData>
     }
   }
 
@@ -43,9 +32,9 @@ export class StatisticDataService {
     let endpoint = `${this.url}/dataset`
 
     if(typeof lossType === "undefined") {
-      return this.http.get(endpoint, this.httpOptions) as Observable<LossDay[]>
+      return this.http.get(endpoint) as Observable<LossDay[]>
     } else {
-      return this.http.get(`${endpoint}?lossType=${lossType}`, this.httpOptions) as Observable<LossDay[]>
+      return this.http.get(`${endpoint}?lossType=${lossType}`) as Observable<LossDay[]>
     }
   }
 

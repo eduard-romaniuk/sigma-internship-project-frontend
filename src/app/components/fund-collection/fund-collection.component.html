@@ -7,10 +7,10 @@
     <i>There are no funds yet</i>
   </div>
 
-  <div *ngFor="let fund of funds" class="col-lg-4 col-md-12 card">
+  <div *ngFor="let fund of funds" class="col-lg-3 m-lg-3 m-md-1 col-md-12 card">
     <div class="card-body">
       <h5 class="card-title">{{fund.name}}</h5>
-      <p class="card-text">{{fund.description}}</p>
+      <p class="card-text" style="max-height: 5em; overflow: hidden; text-overflow: ellipsis;">{{fund.description}}</p>
       <a href={{fund.link}} class="card-link" target="_blank">Visit website</a>
     </div>
   </div>
