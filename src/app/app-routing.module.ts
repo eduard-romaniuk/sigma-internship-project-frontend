@@ -15,7 +15,7 @@ const routes: Routes = [
   {path: 'profile', component: PersonalProfilePageComponent},
   {path: 'profile/funds-list', component: FundsListPageComponent},
   {path: 'profile/users-list', component: UsersListPageComponent},
-  {path: '**', component: NotFoundPageComponent}
+  {path: '**', component: NotFoundPageComponent},
 ];
 
 @NgModule({
