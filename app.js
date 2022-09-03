@@ -5,4 +5,6 @@ app.use(express.static(project_folder));
 app.get('/*', (req, res) => {
   res.sendFile(project_folder + '/index.html');
 });
-app.listen(process.env.PORT || 8080);
+const port = process.env.PORT || 4200;
+app.listen(port);
+console.log(`Application started on port: ${port}`)
