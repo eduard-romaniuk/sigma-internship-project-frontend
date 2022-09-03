@@ -36,23 +36,23 @@
             ]
           },
           "configurations": {
-            "production": {
+            "heroku": {
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "4mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "20kb",
+                  "maximumError": "40kb"
                 }
               ],
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "with": "src/environments/environment.heroku.ts"
                 }
               ],
               "outputHashing": "all"
@@ -66,13 +66,13 @@
               "namedChunks": true
             }
           },
-          "defaultConfiguration": "production"
+          "defaultConfiguration": "heroku"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
-            "production": {
-              "browserTarget": "sigma-internship-frontend:build:production"
+            "heroku": {
+              "browserTarget": "sigma-internship-frontend:build:heroku"
             },
             "development": {
               "browserTarget": "sigma-internship-frontend:build:development"

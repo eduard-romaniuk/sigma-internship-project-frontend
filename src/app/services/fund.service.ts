@@ -1,7 +1,8 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Fund } from '../models/Fund';
+import { environment } from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class FundService {
 
   constructor(private http: HttpClient) { }
 
-  url = 'http://localhost:8080/fund'
+  url = `${environment.apiUrl}/fund`
 
   addFund(fund: Fund): Observable<any> {
     return this.http.post(this.url, fund)
