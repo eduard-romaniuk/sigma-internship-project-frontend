@@ -34,7 +34,7 @@ import { FooterComponent } from './components/footer/footer.component';
     FundCollectionComponent,
     LatestStatisticDataCardComponent,
     MathStatisticDataCardComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
