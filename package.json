@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node app.js",
+    "start": "ng serve --port=${PORT:-4200}",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
@@ -21,7 +21,6 @@
     "@angular/router": "^14.0.0",
     "bootstrap": "^5.2.0",
     "chart.js": "^3.9.1",
-    "express": "^4.18.1",
     "ng2-charts": "^4.0.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
