@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { map } from "rxjs";
+import { map, Observable } from "rxjs";
 import { environment } from "../../environments/environment";
+import { EndUser } from 'src/app/models/EndUser';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,8 @@ export class AuthService {
   public username: string = "";
   public password: string = "";
 
+  currentUser: EndUser | undefined;
+
   authToken: string = ""
 
   constructor(private http: HttpClient) {
@@ -20,12 +23,18 @@ export class AuthService {
 
   authenticationService(username: string, password: string) {
     this.authToken = this.createBasicAuthToken(username, password)
-    return this.http.get(`${environment.apiUrl}/user/login`,
-      { headers: { 'Authorization': this.authToken } }).pipe(map((res) => {
-        this.username = username;
-        this.password = password;
-        this.registerSuccessfulLogin(username, password);
-      }));
+    const response = this.http
+      .get(`${environment.apiUrl}/user/login`,
+        { headers: { 'Authorization': this.authToken } });
+
+    response.subscribe((data: any) => {
+      this.currentUser = data;
+    })
+    return response.pipe(map((res) => {
+      this.username = username;
+      this.password = password;
+      this.registerSuccessfulLogin(username, password);
+    }));
   }
 
   createBasicAuthToken(username: string, password: string) {
@@ -57,5 +66,9 @@ export class AuthService {
     let user = sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME)
     if (user === null) return ''
     return user
+  }
+
+  getCurrentUser() {
+    return this.currentUser;
   }
 }
