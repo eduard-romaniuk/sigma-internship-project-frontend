@@ -8,7 +8,7 @@ import { RegistrationPageComponent } from './pages/registration-page/registratio
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
-import { ReactiveFormsModule } from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { PersonalProfilePageComponent } from './pages/personal-profile-page/personal-profile-page.component';
 import { FundsListPageComponent } from './pages/funds-list-page/funds-list-page.component';
 import { UsersListPageComponent } from './pages/users-list-page/users-list-page.component';
@@ -19,6 +19,11 @@ import { MathStatisticDataCardComponent } from './components/math-statistic-data
 import { NgChartsModule } from 'ng2-charts';
 import { HttpInterceptorService } from './services/httpInterceptor.service';
 import { FooterComponent } from './components/footer/footer.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EditDialogComponent } from './components/dialogs/edit-dialog/edit-dialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatInputModule} from "@angular/material/input";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -35,13 +40,20 @@ import { FooterComponent } from './components/footer/footer.component';
     LatestStatisticDataCardComponent,
     MathStatisticDataCardComponent,
     FooterComponent,
+    EditDialogComponent,
   ],
+  entryComponents: [ EditDialogComponent ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgChartsModule
+    NgChartsModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    FormsModule,
+    MatInputModule,
+    MatButtonModule
   ],
   providers: [
     {
