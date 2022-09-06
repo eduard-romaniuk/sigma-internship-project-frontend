@@ -20,7 +20,7 @@ export class AuthService {
 
   authenticationService(username: string, password: string) {
     this.authToken = this.createBasicAuthToken(username, password)
-    return this.http.get(`${environment.apiUrl}/fund`,
+    return this.http.get(`${environment.apiUrl}/user/login`,
       { headers: { 'Authorization': this.authToken } }).pipe(map((res) => {
         this.username = username;
         this.password = password;
