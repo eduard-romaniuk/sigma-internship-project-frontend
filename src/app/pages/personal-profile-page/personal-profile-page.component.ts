@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Role } from 'src/app/enums/role';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -10,13 +11,17 @@ export class PersonalProfilePageComponent implements OnInit {
 
   email: String = "{}"
 
+  showAdminBtns = false;
+  
   constructor(private authService: AuthService) {
-    console.log(authService.getCurrentUser()?.name)
   }
 
   ngOnInit(): void {
-    this.email = this.authService.getLoggedInUserName()
-    console.log(this.authService.getCurrentUser()?.name)
+    this.email = this.authService.getLoggedInUserName();
+    if(this.authService.getCurrentUserRole() == Role.ADMIN) {
+      this.showAdminBtns = true;
+    } else {
+      this.showAdminBtns = false;
+    }
   }
-
 }
