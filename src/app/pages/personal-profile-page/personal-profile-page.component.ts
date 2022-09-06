@@ -10,10 +10,13 @@ export class PersonalProfilePageComponent implements OnInit {
 
   email: String = "{}"
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService) {
+    console.log(authService.getCurrentUser()?.name)
+  }
 
   ngOnInit(): void {
     this.email = this.authService.getLoggedInUserName()
+    console.log(this.authService.getCurrentUser()?.name)
   }
 
 }

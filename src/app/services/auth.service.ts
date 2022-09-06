@@ -14,7 +14,7 @@ export class AuthService {
   public username: string = "";
   public password: string = "";
 
-  currentUser: EndUser | undefined;
+  public currentUser: EndUser | undefined;
 
   authToken: string = ""
 
