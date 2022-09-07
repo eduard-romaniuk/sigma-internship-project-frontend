@@ -40,9 +40,8 @@ export class FundsListPageComponent implements OnInit {
       panelClass: 'custom-dialog'
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe(() => {
       console.log('The dialog was closed');
-      console.log(result.name + " " + result.description + " " + result.link + " ")
     });
   }
 

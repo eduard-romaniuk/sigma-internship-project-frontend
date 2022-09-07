@@ -3,6 +3,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {DialogData} from "../../../pages/funds-list-page/funds-list-page.component";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {FundService} from "../../../services/fund.service";
+import { Fund } from 'src/app/models/Fund';
 
 @Component({
   selector: 'app-add-fund-dialog',
@@ -12,19 +13,19 @@ import {FundService} from "../../../services/fund.service";
 export class AddFundDialogComponent implements OnInit {
   form: FormGroup;
   pattern =  '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
-  fundService: FundService;
+
+  showError = false;
 
   constructor(
     public dialogRef: MatDialogRef<AddFundDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
-    fundService: FundService
+    private fundService: FundService
   ) {
     this.form = new FormGroup({
-      name: new FormControl('', [Validators.required]),
-      description: new FormControl('', [Validators.required]),
-      link: new FormControl('', [Validators.required, Validators.pattern(this.pattern)]),
+      "name": new FormControl('', [Validators.required]),
+      "description": new FormControl('', [Validators.required]),
+      "link": new FormControl('', [Validators.required, Validators.pattern(this.pattern)]),
     });
-    this.fundService = fundService;
   }
 
 
@@ -36,10 +37,18 @@ export class AddFundDialogComponent implements OnInit {
   }
 
   save(): void {
-    const {value, valid} = this.form;
-    if(valid){
-      console.log(value);
-      this.dialogRef.close(value);
+    if (this.form.valid) {
+      let fund = new Fund(
+        this.form.value.name,
+        this.form.value.description,
+        this.form.value.link
+      )
+      this.fundService.addFund(fund).subscribe(() => {
+        this.dialogRef.close();
+      },
+      () => {
+        this.showError = true;
+      });
     }
   }
 }
