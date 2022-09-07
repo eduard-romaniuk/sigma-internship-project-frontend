@@ -10,7 +10,7 @@ import { UserService } from 'src/app/services/user.service';
 export class UsersListPageComponent implements OnInit {
 
   endUsers: EndUser[] = [];
-  
+
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
@@ -19,4 +19,10 @@ export class UsersListPageComponent implements OnInit {
     })
   }
 
+  delete(id: number) {
+    this.userService.deleteUser(id).subscribe(() => {
+        window.location.reload();
+      },
+      () => {});
+  }
 }

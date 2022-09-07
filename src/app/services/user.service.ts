@@ -17,4 +17,8 @@ export class UserService {
     return this.http.get(this.url) as Observable<EndUser[]>
   }
 
+  deleteUser(id: number): Observable<any> {
+    return this.http.delete(`${this.url}/${id}`)
+  }
+
 }

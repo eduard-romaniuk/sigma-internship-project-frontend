@@ -56,7 +56,8 @@ export class RegistrationPageComponent implements OnInit {
   submit() {
     this.registrationService.signUp(this.myForm.controls["userName"].value,
       this.myForm.controls["userEmail"].value,
-      this.myForm.controls["userPassword"].value)
+      this.myForm.controls["userPassword"].value).subscribe(() => {},
+      () => {});
       this.router.navigate(['']).then(() => {
         window.location.reload();
       });
