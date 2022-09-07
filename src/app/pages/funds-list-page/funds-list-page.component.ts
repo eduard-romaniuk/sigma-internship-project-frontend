@@ -67,4 +67,11 @@ export class FundsListPageComponent implements OnInit {
     });
   }
 
+  deleteFund(id: number) {
+    this.fundService.deleteFund(id).subscribe(() => {
+        window.location.reload();
+      },
+      () => {});
+  }
+
 }
