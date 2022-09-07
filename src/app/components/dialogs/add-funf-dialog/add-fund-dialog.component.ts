@@ -3,7 +3,6 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {DialogData} from "../../../pages/funds-list-page/funds-list-page.component";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {FundService} from "../../../services/fund.service";
-import {Fund} from "../../../models/Fund";
 
 @Component({
   selector: 'app-add-fund-dialog',
@@ -22,7 +21,7 @@ export class AddFundDialogComponent implements OnInit {
   ) {
     this.form = new FormGroup({
       name: new FormControl('', [Validators.required]),
-      desc: new FormControl('', [Validators.required]),
+      description: new FormControl('', [Validators.required]),
       link: new FormControl('', [Validators.required, Validators.pattern(this.pattern)]),
     });
     this.fundService = fundService;

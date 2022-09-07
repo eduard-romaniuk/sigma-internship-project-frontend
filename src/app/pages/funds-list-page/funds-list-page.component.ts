@@ -8,7 +8,7 @@ import {AddFundDialogComponent} from "../../components/dialogs/add-funf-dialog/a
 export interface DialogData {
   title: string;
   name: string;
-  desc: string;
+  description: string;
   link: string;
 }
 
@@ -19,44 +19,45 @@ export interface DialogData {
 })
 export class FundsListPageComponent implements OnInit {
 
-  funds: Fund[] | undefined;
+  funds!: Fund[];
 
   name: string = "";
-  desc: string = "";
+  description: string = "";
   link: string = "";
 
-  constructor(public dialog: MatDialog, public fundService: FundService) {
-    this.fundService.getFunds().subscribe((funds) => this.funds = funds);
+  constructor(public dialog: MatDialog, private fundService: FundService) {
+    this.fundService.getFunds().subscribe((funds: Fund[]) => this.funds = funds);
+  }
+
+  ngOnInit(): void {
+
   }
 
   openDialogEdit(): void {
     const dialogRef = this.dialog.open(EditDialogComponent, {
       width: '600px',
-      data: {title: "Edit Fund", name: this.name, desc: this.desc, link: this.link},
+      data: {title: "Edit Fund", name: this.name, desc: this.description, link: this.link},
       panelClass: 'custom-dialog'
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      console.log(result.name + " " + result.desc + " " + result.link + " ")
+      console.log(result.name + " " + result.description + " " + result.link + " ")
     });
   }
 
   openDialogAdd(): void {
     const dialogRef = this.dialog.open(AddFundDialogComponent, {
       width: '600px',
-      data: {title: "Add new Fund", name: this.name, desc: this.desc, link: this.link},
+      data: {title: "Add new Fund", name: this.name, desc: this.description, link: this.link},
       panelClass: 'custom-dialog'
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      console.log(result.name + " " + result.desc + " " + result.link + " ")
-      this.fundService.addFund(new Fund(result.name, result.desc, result.link))
+      console.log(result.name + " " + result.description + " " + result.link + " ")
+      this.fundService.addFund(new Fund(result.name, result.description, result.link))
     });
-  }
-
-  ngOnInit(): void {
   }
 
 }
