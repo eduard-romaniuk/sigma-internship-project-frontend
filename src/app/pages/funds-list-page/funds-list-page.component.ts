@@ -52,7 +52,7 @@ export class FundsListPageComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       console.log(result.name + " " + result.desc + " " + result.link + " ")
-      this.fundService.addFund(result);
+      this.fundService.addFund(new Fund(result.name, result.desc, result.link))
     });
   }
 
