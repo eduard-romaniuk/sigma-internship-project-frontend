@@ -5,8 +5,16 @@ import {EditDialogComponent} from "../../components/dialogs/edit-dialog/edit-dia
 import {FundService} from "../../services/fund.service";
 import {AddFundDialogComponent} from "../../components/dialogs/add-funf-dialog/add-fund-dialog.component";
 
-export interface DialogData {
+export interface DialogDataAdd {
   title: string;
+  name: string;
+  description: string;
+  link: string;
+}
+
+export interface DialogDataEdit {
+  title: string;
+  id: number;
   name: string;
   description: string;
   link: string;
@@ -33,10 +41,10 @@ export class FundsListPageComponent implements OnInit {
 
   }
 
-  openDialogEdit(): void {
+  openDialogEdit(id: any): void {
     const dialogRef = this.dialog.open(EditDialogComponent, {
       width: '600px',
-      data: {title: "Edit Fund", name: this.name, desc: this.description, link: this.link},
+      data: {title: "Edit Fund", name: this.name, desc: this.description, link: this.link, id},
       panelClass: 'custom-dialog'
     });
 

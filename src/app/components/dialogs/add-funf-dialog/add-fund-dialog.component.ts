@@ -1,9 +1,9 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {DialogData} from "../../../pages/funds-list-page/funds-list-page.component";
+import {DialogDataAdd} from "../../../pages/funds-list-page/funds-list-page.component";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {FundService} from "../../../services/fund.service";
-import { Fund } from 'src/app/models/Fund';
+import {Fund} from 'src/app/models/Fund';
 
 @Component({
   selector: 'app-add-fund-dialog',
@@ -18,7 +18,7 @@ export class AddFundDialogComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<AddFundDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    @Inject(MAT_DIALOG_DATA) public data: DialogDataAdd,
     private fundService: FundService
   ) {
     this.form = new FormGroup({
