@@ -14,7 +14,7 @@ export class FundService {
   url = `${environment.apiUrl}/fund`
 
   addFund(fund: Fund): Observable<any> {
-    return this.http.post(this.url, fund)
+    return this.http.post(this.url, fund);
   }
 
   getFunds(): Observable<Fund[]> {
