@@ -38,7 +38,6 @@ export class EditDialogComponent implements OnInit {
   }
 
   save(id: number): void {
-    console.log("this windows is opened!");
     if (this.form.valid) {
       let fund = new Fund(
         this.form.value.name,
@@ -46,9 +45,8 @@ export class EditDialogComponent implements OnInit {
         this.form.value.link
       )
       fund.id = id;
-      console.log("ok!");
       this.fundService.updateFund(fund, id).subscribe(() => {
-          console.log("nice");
+          window.location.reload();
           this.dialogRef.close();
         },
         () => {
