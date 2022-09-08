@@ -26,7 +26,7 @@ import {EditDialogComponent} from './components/dialogs/edit-dialog/edit-dialog.
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
-import {AddFundDialogComponent} from './components/dialogs/add-funf-dialog/add-fund-dialog.component';
+import {AddFundDialogComponent} from './components/dialogs/add-fund-dialog/add-fund-dialog.component';
 
 @NgModule({
   declarations: [

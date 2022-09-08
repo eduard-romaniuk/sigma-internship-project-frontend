@@ -3,7 +3,7 @@ import {Fund} from "../../models/Fund";
 import {MatDialog} from "@angular/material/dialog";
 import {EditDialogComponent} from "../../components/dialogs/edit-dialog/edit-dialog.component";
 import {FundService} from "../../services/fund.service";
-import {AddFundDialogComponent} from "../../components/dialogs/add-funf-dialog/add-fund-dialog.component";
+import {AddFundDialogComponent} from "../../components/dialogs/add-fund-dialog/add-fund-dialog.component";
 
 export interface DialogDataAdd {
   title: string;
@@ -41,10 +41,10 @@ export class FundsListPageComponent implements OnInit {
 
   }
 
-  openDialogEdit(id: any): void {
+  openDialogEdit(id: number, name: string, description: string, link: string,): void {
     const dialogRef = this.dialog.open(EditDialogComponent, {
       width: '600px',
-      data: {title: "Edit Fund", name: this.name, desc: this.description, link: this.link, id},
+      data: {title: "Edit Fund",  id, name, description, link},
       panelClass: 'custom-dialog'
     });
 
@@ -69,9 +69,8 @@ export class FundsListPageComponent implements OnInit {
 
   deleteFund(id: number) {
     this.fundService.deleteFund(id).subscribe(() => {
-        window.location.reload();
-      },
-      () => {});
+      window.location.reload();
+      });
   }
 
 }
