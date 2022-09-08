@@ -18,6 +18,6 @@ export class RegistrationService {
     this.userEmail = userEmail;
     this.userPassword = userPassword;
 
-    return this.http.post(`http://localhost:8080/registration`, new UserReg(userName, userEmail, userPassword));
+    return this.http.post(`http://localhost:8080/user`, new UserReg(userName, userEmail, userPassword));
   }
 }

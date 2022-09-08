@@ -17,13 +17,14 @@ export class MenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLoggedIn = this.authenticationService.isUserLoggedIn();
-    console.log('menu ->' + this.isLoggedIn);
   }
 
   handleLogout() {
     this.authenticationService.logout();
     this.isLoggedIn = false;
-    window.location.reload();
+    this.router.navigate(['']).then(() => {
+      window.location.reload();
+    })
   }
 
 }

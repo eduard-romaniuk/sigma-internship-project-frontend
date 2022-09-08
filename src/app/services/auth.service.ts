@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { map } from "rxjs";
+import { map, Observable } from "rxjs";
 import { environment } from "../../environments/environment";
+import { EndUser } from 'src/app/models/EndUser';
+import { Role } from '../enums/role';
 
 @Injectable({
   providedIn: 'root'
@@ -9,9 +11,9 @@ import { environment } from "../../environments/environment";
 export class AuthService {
   USER_NAME_SESSION_ATTRIBUTE_NAME = 'authenticatedUser'
   TOKEN = ""
+  ROLE = Role.ANONYMOUS;
 
-  public username: string = "";
-  public password: string = "";
+  public currentUser: EndUser | undefined;
 
   authToken: string = ""
 
@@ -20,21 +22,23 @@ export class AuthService {
 
   authenticationService(username: string, password: string) {
     this.authToken = this.createBasicAuthToken(username, password)
-    return this.http.get(`${environment.apiUrl}/fund`,
-      { headers: { 'Authorization': this.authToken } }).pipe(map((res) => {
-        this.username = username;
-        this.password = password;
-        this.registerSuccessfulLogin(username, password);
-      }));
+    const response = this.http
+      .get(`${environment.apiUrl}/user/login`,
+        { headers: { 'Authorization': this.authToken } }) as Observable<EndUser>;
+    return response.pipe(map((data) => {
+      this.ROLE = data.role;
+      this.registerSuccessfulLogin(username);
+    }));
   }
 
   createBasicAuthToken(username: string, password: string) {
     return 'Basic ' + window.btoa(username + ":" + password)
   }
 
-  registerSuccessfulLogin(username: string, password: string) {
-    sessionStorage.setItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME, username)
-    sessionStorage.setItem(this.TOKEN, this.authToken)
+  registerSuccessfulLogin(username: string) {
+    sessionStorage.setItem("ROLE", this.ROLE);
+    sessionStorage.setItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME, username);
+    sessionStorage.setItem(this.TOKEN, this.authToken);
   }
 
   getTokenSession() {
@@ -43,9 +47,10 @@ export class AuthService {
 
   logout() {
     sessionStorage.removeItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME);
-    this.username = "";
-    this.password = "";
+    sessionStorage.removeItem("ROLE");
     this.authToken = "";
+    this.currentUser = undefined;
+    this.ROLE = Role.ANONYMOUS;
   }
 
   isUserLoggedIn() {
@@ -57,5 +62,11 @@ export class AuthService {
     let user = sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME)
     if (user === null) return ''
     return user
+  }
+
+  getCurrentUserRole() {
+    let role = sessionStorage.getItem("ROLE")
+    if (role === null) return Role.ANONYMOUS
+    return role
   }
 }

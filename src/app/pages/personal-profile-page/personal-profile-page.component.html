@@ -3,9 +3,9 @@
   <div class="ms-5 mt-5">
     <p>Email: {{email}}</p>
   </div>
-  <div class="ms-5 mt-5">
-    <button type="button" class="btn btn-outline-dark me-4" routerLink="funds-list">Funds list</button>
-    <button type="button" class="btn btn-outline-dark" routerLink="users-list">Users list</button>
+  <div class="ms-5 mt-5" *ngIf="showAdminBtns">
+    <button type="button" class="btn btn-outline-dark me-4" routerLink="/profile/funds-list">Funds list</button>
+    <button type="button" class="btn btn-outline-dark" routerLink="/profile/users-list">Users list</button>
   </div>
 </div>
 

@@ -31,15 +31,17 @@ export class LoginPageComponent implements OnInit {
   submit() {
     let login = this.myForm.controls["userEmail"].value
     let password = this.myForm.controls["userPassword"].value
-    this.authenticationService.authenticationService(
-      login, password).subscribe((result) => {
-      this.loginFailure = false;
-      this.router.navigate(['']).then(() => {
-        window.location.reload();
-      });
-    }, () => {
-      this.loginFailure = true;
-    });
+    this.authenticationService.authenticationService(login, password)
+      .subscribe(
+        () => {
+          this.loginFailure = false;    
+          this.router.navigate(['']).then(() => {
+            window.location.reload();
+          })
+        },
+        () => {
+          this.loginFailure = true;
+        });
   }
 
 }

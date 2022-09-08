@@ -1,0 +1,29 @@
+
+
+<h1 mat-dialog-title>{{data.title}}</h1>
+<div mat-dialog-content [formGroup]="form" class="main_box">
+  <p>
+  <mat-form-field appearance="outline">
+    <mat-label>fund name</mat-label>
+    <input matInput [(ngModel)]="data.name" formControlName="name">
+  </mat-form-field>
+  </p>
+  <p>
+  <mat-form-field appearance="outline">
+    <mat-label>fund desc</mat-label>
+    <textarea matInput cdkTextareaAutosize [(ngModel)]="data.description" formControlName="description"></textarea>
+  </mat-form-field>
+  </p>
+  <p>
+  <mat-form-field appearance="outline">
+    <mat-label>fund link</mat-label>
+    <input matInput [(ngModel)]="data.link" formControlName="link">
+  </mat-form-field>
+  </p>
+
+</div>
+<div mat-dialog-actions class="actions">
+  <button mat-stroked-button color="primary" (click)="onNoClick()" >Cancel</button>
+  <button mat-stroked-button color="primary" (click)="save(data.id)" cdkFocusInitial>Confirm</button>
+</div>
+
