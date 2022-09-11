@@ -1,12 +1,85 @@
-<div class="container-fluid ms-5 mt-5">
-  <h2 class="ms-5">Welcome to your profile</h2>
-  <div class="ms-5 mt-5">
-    <p>Email: {{email}}</p>
+<section>
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-md-9 col-lg-7 col-xl-5 profile_box">
+        <div class="card w-100 profile_section" style="border-radius: 15px;">
+          <div class="card-body p-4">
+            <div class="d-flex text-black">
+              <div class="flex-shrink-0">
+              </div>
+              <div class="flex-grow-1 justify-content-center pr_box ms-3">
+                <h1 class="welcome_pr mt-4">Welcome to your profile, {{username}}</h1>
+                <div class="d-flex rounded-3 mb-2 mt-4">
+                  <div class="w-100 p-3 rounded-4" style="background-color: #e3d9d0;">
+                    <div>
+                      <h1 class="fw-bold">Email</h1>
+                      <p class="email_pr">{{email}}</p>
+                    </div>
+                  </div>
+                  <div class="w-100 p-3 ms-4 rounded-4" style="background-color: #e3d9d0;">
+                    <div class="flex">
+                      <h1 class="fw-bold">Subscription</h1>
+                      <p class="email_pr">{{subscription}}</p>
+                    </div>
+                  </div>
+<!--                  <div class="w-100 me-2 p-3 rounded-4" style="background-color: #efefef;">
+                    <div class="flex">
+                      <h1 class="fw-bold">Locale</h1>
+                      <p class="email_pr">{{locale}}</p>
+                    </div>
+                  </div>
+                  <div class="w-100 p-3 rounded-4" style="background-color: #efefef;">
+                    <div class="flex">
+                      <h1 class="fw-bold">Role</h1>
+                      <p class="email_pr">{{role}}</p>
+                    </div>
+                  </div>-->
+                </div>
+                <div class="d-flex pt-1 mb-4 mt-3 btn_pr" *ngIf="showAdminBtns">
+                  <button type="button" class="btn btn-outline-dark me-4 flex-grow-1" routerLink="/profile/funds-list" style="border-width: 2px">Funds list</button>
+                  <button type="button" class="btn btn-outline-dark flex-grow-1" routerLink="/profile/users-list" style="border-width: 2px">Users list</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="ms-5 mt-5" *ngIf="showAdminBtns">
-    <button type="button" class="btn btn-outline-dark me-4" routerLink="/profile/funds-list">Funds list</button>
-    <button type="button" class="btn btn-outline-dark" routerLink="/profile/users-list">Users list</button>
+</section>
+
+<!-- Subscription -->
+<!--<section class="pricing-section mt-5">
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col-xl-5 col-lg-6 col-md-8">
+        <div class="section-title text-center title-ex1">
+          <h2>Subscription Tables</h2>
+        </div>
+      </div>
+    </div>
+    &lt;!&ndash; Pricing Table starts &ndash;&gt;
+    <div class="row">
+      <div class="col-md-4">
+        <div class="price-card ">
+          <h2>Daily</h2>
+          <a class="btn btn-dark btn-mid mt-5">Subscribe</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="price-card featured">
+          <h2>Weekly</h2>
+          <a class="btn btn-dark btn-mid mt-5">Subscribe</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="price-card ">
+          <h2>Monthly</h2>
+          <a class="btn btn-dark btn-mid mt-5">Subscribe</a>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+</section>-->
 
 

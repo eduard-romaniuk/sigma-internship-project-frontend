@@ -10,18 +10,22 @@ import { AuthService } from 'src/app/services/auth.service';
 export class PersonalProfilePageComponent implements OnInit {
 
   email: String = "{}"
+  username: String = "{}"
+  locale: String = "{}"
+  subscription: String = "{}"
+  role: String = "{}"
 
   showAdminBtns = false;
-  
+
   constructor(private authService: AuthService) {
   }
 
   ngOnInit(): void {
     this.email = this.authService.getLoggedInUserName();
-    if(this.authService.getCurrentUserRole() == Role.ADMIN) {
-      this.showAdminBtns = true;
-    } else {
-      this.showAdminBtns = false;
-    }
+    this.username = this.authService.getCurrentUserName();
+    this.locale = this.authService.getCurrentUserLocale();
+    this.subscription = this.authService.getCurrentUserSubscription();
+    this.role = this.authService.getCurrentUserRole();
+    this.showAdminBtns = this.authService.getCurrentUserRole() == Role.ADMIN;
   }
 }

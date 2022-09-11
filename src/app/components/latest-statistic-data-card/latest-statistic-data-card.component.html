@@ -1,66 +1,136 @@
 <div class="col latest-stat" *ngIf="statisticData != undefined">
   <div>
-    <h2>Latest Statistics</h2>
+    <h1 class="fw-bold">Latest Statistics</h1>
     <h6>
       {{statisticData.warDate}} ({{statisticData.dayNumber}} day)
     </h6>
   </div>
   <div class="loss-wrapper">
-    <div class="loss-box" *ngIf="statisticData.personnel_units != 0">
-      <b>+{{statisticData.personnel_units}}</b>
-      <span>Personnel units</span>
+    <div class="loss-box flex-column" *ngIf="statisticData.personnel_units != 0">
+      <div class="d-flex flex-row">
+        <span class="fw-bold mb-2 fs-6">Personnel units</span>
+      </div>
+      <div class="flex-column" >
+        <img src="https://cdn-icons-png.flaticon.com/512/3939/3939761.png" width="50"/>
+        <b class="ms-3">+{{statisticData.personnel_units}}</b>
+      </div>
     </div>
-    <div class="loss-box" *ngIf="statisticData.tanks != 0">
-      <b>+{{statisticData.tanks}}</b>
-      <span>Tanks</span>
+    <div class="loss-box flex-column" *ngIf="statisticData.tanks != 0">
+      <div class="d-flex flex-row">
+        <span class="fw-bold mb-2 fs-6">Tanks</span>
+      </div>
+      <div class="flex-column" >
+        <img src="https://cdn-icons-png.flaticon.com/512/3939/3939821.png" width="50"/>
+        <b class="ms-3">+{{statisticData.tanks}}</b>
+      </div>
     </div>
-    <div class="loss-box" *ngIf="statisticData.armoured_fighting_vehicles != 0">
-      <b>+{{statisticData.armoured_fighting_vehicles}}</b>
-      <span>Armoured fighting vehicles</span>
+    <div class="loss-box flex-column" *ngIf="statisticData.armoured_fighting_vehicles != 0">
+      <div class="d-flex flex-row">
+        <span class="fw-bold mb-2 fs-6">Armoured fighting vehicles</span>
+      </div>
+      <div class="flex-column" >
+        <img src="https://cdn-icons-png.flaticon.com/512/7445/7445169.png" width="50"/>
+        <b class="ms-3">+{{statisticData.armoured_fighting_vehicles}}</b>
+      </div>
     </div>
-    <div class="loss-box" *ngIf="statisticData.artillery_systems != 0">
-      <b>+{{statisticData.artillery_systems}}</b>
-      <span>Artillery systems</span>
+    <div class="loss-box flex-column" *ngIf="statisticData.artillery_systems != 0">
+      <div class="d-flex flex-row">
+        <span class="fw-bold mb-2 fs-6">Artillery systems</span>
+      </div>
+      <div class="flex-column" >
+        <img src="https://cdn-icons-png.flaticon.com/512/3939/3939507.png" width="50"/>
+        <b class="ms-3">+{{statisticData.artillery_systems}}</b>
+      </div>
     </div>
-    <div class="loss-box" *ngIf="statisticData.mlrs != 0">
-      <b>+{{statisticData.mlrs}}</b>
-      <span>MLRS</span>
+    <div class="loss-box flex-column" *ngIf="statisticData.mlrs != 0">
+      <div class="d-flex flex-row">
+        <span class="fw-bold mb-2 fs-6">Mlrs</span>
+      </div>
+      <div class="flex-column" >
+        <img src="https://cdn-icons-png.flaticon.com/512/6754/6754006.png" width="50"/>
+        <b class="ms-3">+{{statisticData.mlrs}}</b>
+      </div>
     </div>
-    <div class="loss-box" *ngIf="statisticData.aa_warfare_systems != 0">
-      <b>+{{statisticData.aa_warfare_systems}}</b>
-      <span>AA warfare systems</span>
+    <div class="loss-box flex-column" *ngIf="statisticData.aa_warfare_systems != 0">
+      <div class="d-flex flex-row">
+        <span class="fw-bold mb-2 fs-6">AA warfare systems</span>
+      </div>
+      <div class="flex-column" >
+        <img src="https://cdn-icons-png.flaticon.com/512/2646/2646845.png" width="50"/>
+        <b class="ms-3">+{{statisticData.aa_warfare_systems}}</b>
+      </div>
     </div>
-    <div class="loss-box" *ngIf="statisticData.planes != 0">
-      <b>+{{statisticData.planes}}</b>
-      <span>Planes</span>
+    <div class="loss-box flex-column" *ngIf="statisticData.planes != 0">
+      <div class="d-flex flex-row">
+        <span class="fw-bold mb-2 fs-6">Planes</span>
+      </div>
+      <div class="flex-column" >
+        <img src="https://cdn-icons-png.flaticon.com/512/2090/2090021.png" width="50"/>
+        <b class="ms-3">+{{statisticData.planes}}</b>
+      </div>
     </div>
-    <div class="loss-box" *ngIf="statisticData.helicopters != 0">
-      <b>+{{statisticData.helicopters}}</b>
-      <span>Helicopters</span>
+    <div class="loss-box flex-column" *ngIf="statisticData.helicopters != 0">
+      <div class="d-flex flex-row">
+        <span class="fw-bold mb-2 fs-6">Helicopters</span>
+      </div>
+      <div class="flex-column" >
+        <img src="https://cdn-icons-png.flaticon.com/512/3939/3939396.png" width="50"/>
+        <b class="ms-3">+{{statisticData.helicopters}}</b>
+      </div>
     </div>
-    <div class="loss-box" *ngIf="statisticData.vehicles_fuel_tanks != 0">
-      <b>+{{statisticData.vehicles_fuel_tanks}}</b>
-      <span>Vehicles fuel tanks</span>
+    <div class="loss-box flex-column" *ngIf="statisticData.vehicles_fuel_tanks != 0">
+      <div class="d-flex flex-row">
+        <span class="fw-bold mb-2 fs-6">Vehicles fuel tanks</span>
+      </div>
+      <div class="flex-column" >
+        <img src="https://cdn-icons-png.flaticon.com/512/3806/3806359.png" width="50"/>
+        <b class="ms-3">+{{statisticData.personnel_units}}</b>
+      </div>
     </div>
-    <div class="loss-box" *ngIf="statisticData.warships_cutters != 0">
-      <b>+{{statisticData.warships_cutters}}</b>
-      <span>Warships cutters</span>
+    <div class="loss-box flex-column" *ngIf="statisticData.warships_cutters != 0">
+      <div class="d-flex flex-row">
+        <span class="fw-bold mb-2 fs-6">Warships cutters</span>
+      </div>
+      <div class="flex-column" >
+        <img src="https://cdn-icons-png.flaticon.com/512/3939/3939752.png" width="50"/>
+        <b class="ms-3">+{{statisticData.warships_cutters}}</b>
+      </div>
     </div>
-    <div class="loss-box" *ngIf="statisticData.cruise_missiles != 0">
-      <b>+{{statisticData.cruise_missiles}}</b>
-      <span>Cruise missiles</span>
+    <div class="loss-box flex-column" *ngIf="statisticData.cruise_missiles != 0">
+      <div class="d-flex flex-row">
+        <span class="fw-bold mb-2 fs-6">Cruise missiles</span>
+      </div>
+      <div class="flex-column" >
+        <img src="https://cdn-icons-png.flaticon.com/512/3939/3939740.png" width="50"/>
+        <b class="ms-3">+{{statisticData.cruise_missiles}}</b>
+      </div>
     </div>
-    <div class="loss-box" *ngIf="statisticData.uav_systems != 0">
-      <b>+{{statisticData.uav_systems}}</b>
-      <span>UAV systems</span>
+    <div class="loss-box flex-column" *ngIf="statisticData.uav_systems != 0">
+      <div class="d-flex flex-row">
+        <span class="fw-bold mb-2 fs-6">UAV systems</span>
+      </div>
+      <div class="flex-column" >
+        <img src="https://cdn-icons-png.flaticon.com/512/3939/3939550.png" width="50"/>
+        <b class="ms-3">+{{statisticData.uav_systems}}</b>
+      </div>
     </div>
-    <div class="loss-box" *ngIf="statisticData.special_military_equip != 0">
-      <b>+{{statisticData.special_military_equip}}</b>
-      <span>Special military equip</span>
+    <div class="loss-box flex-column" *ngIf="statisticData.special_military_equip != 0">
+      <div class="d-flex flex-row">
+        <span class="fw-bold mb-2 fs-6">Special military equip</span>
+      </div>
+      <div class="flex-column" >
+        <img src="https://cdn-icons-png.flaticon.com/512/3939/3939630.png" width="50"/>
+        <b class="ms-3">+{{statisticData.special_military_equip}}</b>
+      </div>
     </div>
-    <div class="loss-box" *ngIf="statisticData.atgm_srbm_systems != 0">
-      <b>+{{statisticData.atgm_srbm_systems}}</b>
-      <span>atgm srbm system</span>
+    <div class="loss-box flex-column" *ngIf="statisticData.atgm_srbm_systems != 0">
+      <div class="d-flex flex-row">
+        <span class="fw-bold mb-2 fs-6">Atgm srbm systems</span>
+      </div>
+      <div class="flex-column" >
+        <img src="https://cdn-icons-png.flaticon.com/512/7445/7445212.png" width="50"/>
+        <b class="ms-3">+{{statisticData.atgm_srbm_systems}}</b>
+      </div>
     </div>
   </div>
 </div>
