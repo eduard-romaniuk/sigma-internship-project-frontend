@@ -4,6 +4,8 @@ import { map, Observable } from "rxjs";
 import { environment } from "../../environments/environment";
 import { EndUser } from 'src/app/models/EndUser';
 import { Role } from '../enums/role';
+import {Subscription} from "../enums/subscription";
+import {Locale} from "../models/Locale";
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +14,9 @@ export class AuthService {
   USER_NAME_SESSION_ATTRIBUTE_NAME = 'authenticatedUser'
   TOKEN = ""
   ROLE = Role.ANONYMOUS;
+  username = "";
+  subscription = Subscription.OFF;
+  locale = "";
 
   public currentUser: EndUser | undefined;
 
@@ -27,6 +32,9 @@ export class AuthService {
         { headers: { 'Authorization': this.authToken } }) as Observable<EndUser>;
     return response.pipe(map((data) => {
       this.ROLE = data.role;
+      this.username = data.name;
+      this.subscription = data.subscription;
+      this.locale = data.locale.name;
       this.registerSuccessfulLogin(username);
     }));
   }
@@ -37,6 +45,9 @@ export class AuthService {
 
   registerSuccessfulLogin(username: string) {
     sessionStorage.setItem("ROLE", this.ROLE);
+    sessionStorage.setItem("USERNAME", this.username);
+    sessionStorage.setItem("SUBSCRIPTION", this.subscription);
+    sessionStorage.setItem("LOCALE", this.locale);
     sessionStorage.setItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME, username);
     sessionStorage.setItem(this.TOKEN, this.authToken);
   }
@@ -68,5 +79,23 @@ export class AuthService {
     let role = sessionStorage.getItem("ROLE")
     if (role === null) return Role.ANONYMOUS
     return role
+  }
+
+  getCurrentUserName() {
+    let userName = sessionStorage.getItem("USERNAME")
+    if (userName === null) return ''
+    return userName
+  }
+
+  getCurrentUserLocale() {
+    let userLocale = sessionStorage.getItem("LOCALE")
+    if (userLocale === null) return "English";
+    return userLocale
+  }
+
+  getCurrentUserSubscription() {
+    let userSubscription = sessionStorage.getItem("SUBSCRIPTION")
+    if (userSubscription === null) return Subscription.OFF
+    return userSubscription
   }
 }

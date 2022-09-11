@@ -1,5 +1,9 @@
 .latest-stat {
   padding: 30px;
+  margin-top: 50px;
+  border-radius: 15px;
+  border: 4px solid #a4ae80;
+  background-color: #d4dea4;
 
   .loss-wrapper {
     display: grid;
@@ -7,8 +11,12 @@
 
     .loss-box {
       line-height: 1.5em;
+      border: 3px solid #87906b;
+      border-radius: 15px;
+      margin: 10px;
       display: flex;
       flex-direction: column;
+      background-color: #c1ca95;
       padding: 20px;
       b {
         font-size: 2em;
