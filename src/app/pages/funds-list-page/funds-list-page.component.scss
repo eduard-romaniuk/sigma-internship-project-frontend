@@ -22,23 +22,30 @@ table {
   margin-left: 105px;
   margin-right: 155px;
   margin-top: 80px;
+  table-layout: fixed;
 }
 
 th {
-  text-align: center;
+  text-align: left;
 }
 
 td {
   border: solid 3px #bcb7b4;
   border-style: solid none;
   background-color: #ece3df;
-  text-align: center;
+  text-align: left;
   vertical-align: middle;
+  word-wrap:break-word;
+}
+
+.td_btn {
+  align-items: center;
 }
 td:first-child {
   border-left-style: solid;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
+  width: 10%;
 }
 td:last-child {
   border-right-style: solid;
