@@ -6,6 +6,7 @@ import { EndUser } from 'src/app/models/EndUser';
 import { Role } from '../enums/role';
 import {Subscription} from "../enums/subscription";
 import {Locale} from "../models/Locale";
+import { UserReg } from '../models/UserReg';
 
 @Injectable({
   providedIn: 'root'
@@ -97,5 +98,9 @@ export class AuthService {
     let userSubscription = sessionStorage.getItem("SUBSCRIPTION")
     if (userSubscription === null) return Subscription.OFF
     return userSubscription
+  }
+
+  signUp(userName: string, userEmail: string, userPassword: string) {
+    return this.http.post(`http://localhost:8080/user`, new UserReg(userName, userEmail, userPassword));
   }
 }

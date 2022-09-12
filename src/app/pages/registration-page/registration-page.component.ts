@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {AbstractControl, FormControl, FormGroup, ValidatorFn, Validators} from "@angular/forms";
-import {ActivatedRoute, Router} from "@angular/router";
-import {RegistrationService} from "../../services/registration.service";
+import { Component, OnInit } from '@angular/core';
+import { AbstractControl, FormControl, FormGroup, ValidatorFn, Validators } from "@angular/forms";
+import { ActivatedRoute, Router } from "@angular/router";
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-registration-page',
@@ -13,15 +13,17 @@ export class RegistrationPageComponent implements OnInit {
   myForm: FormGroup;
 
   constructor(private route: ActivatedRoute,
-              private router: Router,
-              private registrationService: RegistrationService) {
+    private router: Router,
+    private authenticationService: AuthService) {
     this.myForm = new FormGroup({
       userName: new FormControl('', Validators.required),
       userEmail: new FormControl('', [Validators.required, Validators.email]),
       userPassword: new FormControl('', Validators.required),
-      confirmPassword: new FormControl('', Validators.required, ),
-    }, {  validators: this.passwordMatch(
-      'userPassword', 'confirmPassword') })
+      confirmPassword: new FormControl('', Validators.required,),
+    }, {
+      validators: this.passwordMatch(
+        'userPassword', 'confirmPassword')
+    })
   }
 
   ngOnInit(): void {
@@ -44,8 +46,8 @@ export class RegistrationPageComponent implements OnInit {
       }
 
       if (passwordControl.value !== confirmPasswordControl.value) {
-        confirmPasswordControl.setErrors({mustMatch: true});
-        return {mustMatch: true}
+        confirmPasswordControl.setErrors({ mustMatch: true });
+        return { mustMatch: true }
       } else {
         confirmPasswordControl.setErrors(null);
         return null;
@@ -54,13 +56,18 @@ export class RegistrationPageComponent implements OnInit {
   }
 
   submit() {
-    this.registrationService.signUp(this.myForm.controls["userName"].value,
-      this.myForm.controls["userEmail"].value,
-      this.myForm.controls["userPassword"].value).subscribe(() => {},
-      () => {});
-      this.router.navigate(['']).then(() => {
-        window.location.reload();
+    let username = this.myForm.controls["userName"].value;
+    let email = this.myForm.controls["userEmail"].value;
+    let password = this.myForm.controls["userPassword"].value;
+
+    this.authenticationService.signUp(username, email, password)
+      .subscribe(() => {
+        this.authenticationService.authenticationService(email, password)
+          .subscribe(() => {
+              this.router.navigate(['']).then(() => {
+                window.location.reload();
+              })
+            });
       });
   }
-
 }

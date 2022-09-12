@@ -44,8 +44,7 @@ export class AddFundDialogComponent implements OnInit {
         this.form.value.link
       )
       this.fundService.addFund(fund).subscribe(() => {
-        window.location.reload();
-        this.dialogRef.close();
+        this.dialogRef.close(fund);
       },
       () => {
         this.showError = true;

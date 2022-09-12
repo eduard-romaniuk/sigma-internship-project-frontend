@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {Fund} from "../../models/Fund";
-import {MatDialog} from "@angular/material/dialog";
-import {EditDialogComponent} from "../../components/dialogs/edit-dialog/edit-dialog.component";
-import {FundService} from "../../services/fund.service";
-import {AddFundDialogComponent} from "../../components/dialogs/add-fund-dialog/add-fund-dialog.component";
+import { Component, OnInit } from '@angular/core';
+import { Fund } from "../../models/Fund";
+import { MatDialog } from "@angular/material/dialog";
+import { EditDialogComponent } from "../../components/dialogs/edit-dialog/edit-dialog.component";
+import { FundService } from "../../services/fund.service";
+import { AddFundDialogComponent } from "../../components/dialogs/add-fund-dialog/add-fund-dialog.component";
 
 export interface DialogDataAdd {
   title: string;
@@ -44,33 +44,36 @@ export class FundsListPageComponent implements OnInit {
   openDialogEdit(id: number, name: string, description: string, link: string,): void {
     const dialogRef = this.dialog.open(EditDialogComponent, {
       width: '600px',
-      data: {title: "Edit Fund",  id, name, description, link},
+      data: { title: "Edit Fund", id, name, description, link },
       panelClass: 'custom-dialog'
     });
 
-    dialogRef.afterClosed().subscribe(() => {
+    dialogRef.afterClosed().subscribe(editedFund => {
       console.log('The dialog was closed');
+      let index = this.funds.findIndex(fund => fund.id === id);
+      this.funds[index] = editedFund;
     });
   }
 
   openDialogAdd(): void {
     const dialogRef = this.dialog.open(AddFundDialogComponent, {
       width: '600px',
-      data: {title: "Add new Fund", name: this.name, desc: this.description, link: this.link},
+      data: { title: "Add new Fund", name: this.name, desc: this.description, link: this.link },
       panelClass: 'custom-dialog'
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe(newFund => {
       console.log('The dialog was closed');
-      console.log(result.name + " " + result.description + " " + result.link + " ")
-      this.fundService.addFund(new Fund(result.name, result.description, result.link))
+      console.log(newFund.name + " " + newFund.description + " " + newFund.link + " ")
+      this.funds.push(newFund);
     });
   }
 
   deleteFund(id: number) {
     this.fundService.deleteFund(id).subscribe(() => {
-      window.location.reload();
-      });
+      let index = this.funds.findIndex(fund => fund.id === id);
+      this.funds.splice(index, 1);
+    });
   }
 
 }

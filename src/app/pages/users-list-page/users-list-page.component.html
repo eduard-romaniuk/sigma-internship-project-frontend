@@ -28,7 +28,7 @@
         <td>{{user.locale.name}}</td>
         <td>{{user.subscription}}</td>
         <td>
-          <button type="button" class="btn btn-danger w-100" (click)="delete(user.id)">Remove</button>
+          <button type="button" *ngIf="user.id !== 1" class="btn btn-danger w-100" (click)="delete(user.id)">Remove</button>
         </td>
       </tr>
     </tbody>

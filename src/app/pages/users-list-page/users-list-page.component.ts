@@ -21,8 +21,8 @@ export class UsersListPageComponent implements OnInit {
 
   delete(id: number) {
     this.userService.deleteUser(id).subscribe(() => {
-        window.location.reload();
-      },
-      () => {});
+      let index = this.endUsers.findIndex(user => user.id === id);
+      this.endUsers.splice(index, 1);
+    });
   }
 }

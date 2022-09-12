@@ -58,8 +58,8 @@ export class MathStatisticDataCardComponent implements OnInit {
 
     this.statisticDataService.getCalculatedStatisticData(this.currentLossType).subscribe(data => {
       this.calculatedStatisticData = data;
-      this.calculatedStatisticData.mean = Math.round(this.calculatedStatisticData.mean)
-      this.calculatedStatisticData.median = Math.round(this.calculatedStatisticData.median)
+      this.calculatedStatisticData.mean = Math.round(this.calculatedStatisticData.mean * 100) / 100
+      this.calculatedStatisticData.median = Math.round(this.calculatedStatisticData.median * 100) / 100
     })
   }
 }

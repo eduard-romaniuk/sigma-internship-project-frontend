@@ -46,8 +46,7 @@ export class EditDialogComponent implements OnInit {
       )
       fund.id = id;
       this.fundService.updateFund(fund, id).subscribe(() => {
-          window.location.reload();
-          this.dialogRef.close();
+          this.dialogRef.close(fund);
         },
         () => {
           this.showError = true;
