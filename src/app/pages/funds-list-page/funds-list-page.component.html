@@ -14,21 +14,21 @@
 <div class="table_b d-flex flex-row">
   <table class="table">
     <thead class="">
-      <th scope="col" class="px-3">ID</th>
-      <th scope="col">Fund name</th>
-      <th scope="col">Fund description</th>
+      <th scope="col" class="col-md-1">ID</th>
+      <th scope="col" class="col-md-2">Fund name</th>
+      <th scope="col" class="col-md-4">Fund description</th>
       <th scope="col">Fund link</th>
       <th scope="col">Actions</th>
     </thead>
     <tbody class="table-group-divider">
       <tr *ngFor="let fund of funds">
-        <td>{{fund.id}}</td>
+        <td >{{fund.id}}</td>
         <td>{{fund.name}}</td>
         <td>{{fund.description}}</td>
         <td>{{fund.link}}</td>
-        <td class="d-flex">
-          <button type="button" class="btn btn-danger w-100 me-3" (click)="deleteFund(fund.id)">Remove</button>
-          <button type="button" class="btn btn-success w-100" (click)="openDialogEdit(fund.id, fund.name, fund.description, fund.link)">Edit</button>
+        <td class="td_btn">
+          <button type="button" class="btn btn-danger w-100" (click)="deleteFund(fund.id)">Remove</button>
+          <button type="button" class="btn btn-success w-100 mt-2" (click)="openDialogEdit(fund.id, fund.name, fund.description, fund.link)">Edit</button>
         </td>
       </tr>
     </tbody>
